@@ -38,12 +38,12 @@ void nombresJugadores(Jugador &j1, Jugador &j2)
     cout << "Nombres confirmados: " << j1.nombre << " VS " << j2.nombre << endl;
 }
 
-void mezclarMazo(Jugador j1, Jugador j2, Carta arr[], Carta vMazoMano[])
+void selecCartas(Jugador j1, Jugador j2, Carta arr[], Carta vMazoMano[])
 {
     int aleatorio;
-    for (int i = 0; i < 10; i ++)
+    for (int i = 0; i < MAZO_MANO; i ++)
     {
-        aleatorio = generarNumero(20);
+        aleatorio = generarNumero(MAZO);
         if(arr[aleatorio].enMazo == true)
         {
             vMazoMano[i]=arr[aleatorio];
@@ -55,23 +55,54 @@ void mezclarMazo(Jugador j1, Jugador j2, Carta arr[], Carta vMazoMano[])
         }
     }
 
-    for(int i = 0; i < 20; i ++){
-        cout << "CARTA ACTUAL: " << arr[i].palo << " " << arr[i].valor << " " << arr[i].enMazo << endl;
+    for(int i = 0; i < MAZO; i ++)
+    {
+        cout << "CARTAS DEL MAZO: " << arr[i].palo << " " << arr[i].valor << " " << arr[i].enMazo << endl;
+    }
+    for(int i = 0; i < MAZO_MANO; i ++)
+    {
+        cout << "CARTA en juego: " << vMazoMano[i].palo << " " << vMazoMano[i].valor << " " << vMazoMano[i].enMazo << endl;
     }
 }
 
-
-void repartirCartas(Carta vMazoMano[], Jugador &jugador1, Jugador &jugador2)
+void mezclarMazo(Carta vArr[], int tam)
 {
-    int indice;
-    for(int x=0; x<10; x++)
+    int aleatorio1, aleatorio2;
+    Carta aux;
+    for(int x=0; x<100; x++)
     {
-        if(x%2== 0)
+        aleatorio1= generarNumero(tam);
+        aleatorio2= generarNumero(tam);
+        aux=vArr[aleatorio1];
+        vArr[aleatorio1]=vArr[aleatorio2];
+        vArr[aleatorio2]=aux;
+    }
+}
+
+void repartirCartas(Carta vMazoMano[], Jugador jugador1, Jugador jugador2)
+{
+    for(int x=0; x<MAZO_MANO; x++)
+    {
+        if(x%2== 0) //Indice par se asocia al jugador 1 e impar al jugador 2
         {
-            jugador1.corral[indice]=vMazoMano[x];
-        }else{
-            jugador2.corral[indice]=vMazoMano[x];
+            jugador1.corral[x/2]=vMazoMano[x];
         }
+        else
+        {
+            jugador2.corral[x/2]=vMazoMano[x];
+        }
+    }
+
+    //mostrar con cout que le queda a cada jugador
+    cout << "----CARTAS DE " << jugador1.nombre<< "----" << endl;
+    for(int x=0; x<5; x++)
+    {
+    cout  << jugador1.corral[x].palo << " " << jugador1.corral[x].valor << endl;
+    }
+    cout  << "----CARTAS DE " << jugador2.nombre << "----"  << endl;
+    for(int x=0; x<5; x++)
+    {
+    cout << jugador2.corral[x].palo << " " << jugador2.corral[x].valor << endl;
     }
 }
 
