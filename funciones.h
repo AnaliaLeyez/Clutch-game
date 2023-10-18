@@ -12,6 +12,6 @@ void mostrarMenu(int &opcion, Jugador &j1, Jugador &j2);
 void manejarOpcion(int opcion, Jugador &j1, Jugador &j2);
 void nombresJugadores(Jugador &j1, Jugador &j2);
 int generarNumero(int tamanio);
-void repartirCartas(Jugador j1, Jugador j2, Carta arr[], Carta vMazoMano[]);
+void repartirCartas(Jugador j1, Jugador j2, Carta arr[]);
 //void repartirCartas(Carta vMazoMano[], Jugador jugador1, Jugador jugador2);
 void mezclarMazo(Carta vArr[], int tam);

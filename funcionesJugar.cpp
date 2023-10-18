@@ -38,7 +38,7 @@ void nombresJugadores(Jugador &j1, Jugador &j2)
     cout << "Nombres confirmados: " << j1.nombre << " VS " << j2.nombre << endl;
 }
 
-void repartirCartas(Jugador j1, Jugador j2, Carta arr[], Carta vMazoMano[])
+void repartirCartas(Jugador j1, Jugador j2, Carta arr[])
 {
     int aleatorio;
     for (int i = 0; i < MAZO_MANO; i ++)

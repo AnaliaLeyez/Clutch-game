@@ -36,7 +36,6 @@ void manejarOpcion(int opcion, Jugador &j1, Jugador &j2)
         {"Pica", "10", true}, {"Pica", "J", true}, {"Pica", "Q", true}, {"Pica", "K", true}, {"Pica", "A", true},
         {"Trebol", "10", true}, {"Trebol", "J", true}, {"Trebol", "Q", true}, {"Trebol", "K", true}, {"Trebol", "A", true}
     };
-    Carta vMazoMano[MAZO_MANO]={};
     // INGRESO NOMBRES
       nombresJugadores(j1, j2);
 
@@ -44,9 +43,9 @@ void manejarOpcion(int opcion, Jugador &j1, Jugador &j2)
     mezclarMazo(vMazo, MAZO); //esto mezcla el mazo completo
 
     // SELECCIONAR CARTAS EN JUEGO
-    repartirCartas(j1, j2, vMazo, vMazoMano);
+    repartirCartas(j1, j2, vMazo);
     mezclarMazo(vMazo, MAZO_MANO); //esto mezcla las cartas que quedan a un costado
-    //repartirCartas(vMazoMano, j1, j2); //Crea el corral de cada jugador
+    repartirCartas(j1, j2, vMazo); //Crea el corral de cada jugador
 
 
     //    ->10-J-Q-K-A de manera ordenada, se mezcla y reparte nuevamente.
