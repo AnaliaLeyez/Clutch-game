@@ -44,9 +44,11 @@ void manejarOpcion(int opcion, Jugador &j1, Jugador &j2)
     mezclarMazo(vMazo, MAZO); //esto mezcla el mazo completo
 
     // SELECCIONAR CARTAS EN JUEGO
-    selecCartas(j1, j2, vMazo, vMazoMano);
+    repartirCartas(j1, j2, vMazo, vMazoMano);
     mezclarMazo(vMazo, MAZO_MANO); //esto mezcla las cartas que quedan a un costado
-    repartirCartas(vMazoMano, j1, j2); //Crea el corral de cada jugador
+    //repartirCartas(vMazoMano, j1, j2); //Crea el corral de cada jugador
+
+
     //    ->10-J-Q-K-A de manera ordenada, se mezcla y reparte nuevamente.
     //    ->OPCIÓN NIVEL  DIOS: EMPATE EN TODO! POR EJ 2 ASES + 2 Ks + Js
     //    ->QUIEN COMIENZA? MAS ASES - MAS Ks - MAS Qs - MAS Js - MAS 10s

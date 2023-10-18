@@ -1,11 +1,11 @@
 # depslib dependency file v1.0
-1697503255 source:c:\users\anali\documents\analía\tecnicatura univ programacion utn\materias 1º cuatri\laboratorio de computaciÓn i\tpintegradorgrupal\funcionesmenu.cpp
+1697509426 source:c:\users\anali\documents\analía\tecnicatura univ programacion utn\materias 1º cuatri\laboratorio de computaciÓn i\tpintegradorgrupal\funcionesmenu.cpp
 	<iostream>
 	<locale>
 	"funciones.h"
 	"estructuras.h"
 
-1697502739 c:\users\anali\documents\analía\tecnicatura univ programacion utn\materias 1º cuatri\laboratorio de computaciÓn i\tpintegradorgrupal\funciones.h
+1697506973 c:\users\anali\documents\analía\tecnicatura univ programacion utn\materias 1º cuatri\laboratorio de computaciÓn i\tpintegradorgrupal\funciones.h
 	<iostream>
 	"estructuras.h"
 
@@ -23,7 +23,7 @@
 	"funciones.h"
 	"estructuras.h"
 
-1697504293 source:c:\users\anali\documents\analía\tecnicatura univ programacion utn\materias 1º cuatri\laboratorio de computaciÓn i\tpintegradorgrupal\funcionesjugar.cpp
+1697507204 source:c:\users\anali\documents\analía\tecnicatura univ programacion utn\materias 1º cuatri\laboratorio de computaciÓn i\tpintegradorgrupal\funcionesjugar.cpp
 	<iostream>
 	"funciones.h"
 	"estructuras.h"
