@@ -37,15 +37,36 @@ void manejarOpcion(int opcion, Jugador &j1, Jugador &j2)
         {"Trebol", "10", true}, {"Trebol", "J", true}, {"Trebol", "Q", true}, {"Trebol", "K", true}, {"Trebol", "A", true}
     };
     // INGRESO NOMBRES
-      nombresJugadores(j1, j2);
+    nombresJugadores(j1, j2);
 
     // MEZCLAR EL MAZO
     mezclarMazo(vMazo, MAZO); //esto mezcla el mazo completo
 
     // SELECCIONAR CARTAS EN JUEGO
-    repartirCartas(j1, j2, vMazo);
-    mezclarMazo(vMazo, MAZO_MANO); //esto mezcla las cartas que quedan a un costado
     repartirCartas(j1, j2, vMazo); //Crea el corral de cada jugador
+    mezclarMazo(vMazo, MAZO); //OJO esto mezcla las cartas que quedan a un costado, pero las q estan en false tambien
+
+    //ELEGIR QUIEN JUEGA PRIMERO
+    elegirOrden(j1, j2);
+        //Indico quien juega primero
+    if( elegirOrden(j1, j2)==1 )
+    {
+        cout<< "Inicia " << j1.nombre << endl;
+        //inicia= j1;
+    }
+    else
+    {
+        if( elegirOrden(j1,j2)==2)
+        {
+            cout<< "Inicia " << j2.nombre << endl;
+            //inicia=j2
+        }
+        else
+        {
+            cout<< "no Inicia NINGUNO, volvemos a barajar";
+            manejarOpcion(1, j1, j2);
+        }
+    }
 
 
     //    ->10-J-Q-K-A de manera ordenada, se mezcla y reparte nuevamente.

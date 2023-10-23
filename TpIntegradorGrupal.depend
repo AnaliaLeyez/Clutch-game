@@ -1,21 +1,21 @@
 # depslib dependency file v1.0
-1697588878 source:c:\users\anali\documents\analía\tecnicatura univ programacion utn\materias 1º cuatri\laboratorio de computaciÓn i\tpintegradorgrupal\funcionesmenu.cpp
+1697686250 source:c:\users\anali\documents\analía\tecnicatura univ programacion utn\materias 1º cuatri\laboratorio de computaciÓn i\tpintegradorgrupal\funcionesmenu.cpp
 	<iostream>
 	<locale>
 	"funciones.h"
 	"estructuras.h"
 
-1697588856 c:\users\anali\documents\analía\tecnicatura univ programacion utn\materias 1º cuatri\laboratorio de computaciÓn i\tpintegradorgrupal\funciones.h
+1697828736 c:\users\anali\documents\analía\tecnicatura univ programacion utn\materias 1º cuatri\laboratorio de computaciÓn i\tpintegradorgrupal\funciones.h
 	<iostream>
 	"estructuras.h"
 
-1697492742 c:\users\anali\documents\analía\tecnicatura univ programacion utn\materias 1º cuatri\laboratorio de computaciÓn i\tpintegradorgrupal\estructuras.h
+1697679098 c:\users\anali\documents\analía\tecnicatura univ programacion utn\materias 1º cuatri\laboratorio de computaciÓn i\tpintegradorgrupal\estructuras.h
 
 1697489635 source:c:\users\anali\documents\analía\tecnicatura univ programacion utn\materias 1º cuatri\laboratorio de computaciÓn i\tpintegradorgrupal\funcionesrandom.cpp
 	"funciones.h"
 	"estructuras.h"
 
-1697588027 source:c:\users\anali\documents\analía\tecnicatura univ programacion utn\materias 1º cuatri\laboratorio de computaciÓn i\tpintegradorgrupal\main.cpp
+1697589656 source:c:\users\anali\documents\analía\tecnicatura univ programacion utn\materias 1º cuatri\laboratorio de computaciÓn i\tpintegradorgrupal\main.cpp
 	<iostream>
 	<locale>
 	<cstdlib>
@@ -23,7 +23,7 @@
 	"funciones.h"
 	"estructuras.h"
 
-1697588848 source:c:\users\anali\documents\analía\tecnicatura univ programacion utn\materias 1º cuatri\laboratorio de computaciÓn i\tpintegradorgrupal\funcionesjugar.cpp
+1697828757 source:c:\users\anali\documents\analía\tecnicatura univ programacion utn\materias 1º cuatri\laboratorio de computaciÓn i\tpintegradorgrupal\funcionesjugar.cpp
 	<iostream>
 	"funciones.h"
 	"estructuras.h"
