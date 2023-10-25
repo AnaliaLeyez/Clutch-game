@@ -9,3 +9,10 @@ int generarNumero(int tamanio)
     random = rand()% tamanio;
     return random;
 }
+
+
+int lanzarDado(){
+ int dado = generarNumero(6) + 1;
+
+  return dado;
+}

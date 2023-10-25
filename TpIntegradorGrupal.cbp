@@ -34,9 +34,11 @@
 		</Compiler>
 		<Unit filename="estructuras.h" />
 		<Unit filename="funciones.h" />
+		<Unit filename="funcionesDado.cpp" />
 		<Unit filename="funcionesJugar.cpp" />
 		<Unit filename="funcionesMenu.cpp" />
 		<Unit filename="funcionesRandom.cpp" />
+		<Unit filename="funcionesUnderTheGun.cpp" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />

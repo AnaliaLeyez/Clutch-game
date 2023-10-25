@@ -1,5 +1,6 @@
 #include<iostream>
 #include<locale>
+#include<stdio.h>
 #include "funciones.h"
 #include "estructuras.h"
 
@@ -39,38 +40,52 @@ void manejarOpcion(int opcion, Jugador &j1, Jugador &j2)
     // INGRESO NOMBRES
     nombresJugadores(j1, j2);
 
+    //NUEVO, ANA
+    cout <<"ENHORABUENA COMENZAMOS EL JUEGO!!!" << endl;
+    cout << "ESTAS SON LAS CARTAS INICIALES" << endl;
+
+     mostrarMazoEnMesa(vMazo);
+    //NUEVO, ANA
+
     // MEZCLAR EL MAZO
     mezclarMazo(vMazo, MAZO); //esto mezcla el mazo completo
 
     // SELECCIONAR CARTAS EN JUEGO
     repartirCartas(j1, j2, vMazo); //Crea el corral de cada jugador
-    mezclarMazo(vMazo, MAZO); //OJO esto mezcla las cartas que quedan a un costado, pero las q estan en false tambien
+    mostrarCartasDeJugadores(j1,j2);
 
+    //Valida que no haya escalera
+    while(StraightHand(j1, j2)){
+      cin.ignore();
+      cout << "OPS SALIO ESCALERA! VOLVEREMOS A REPARTIR...";
+      // Limpiar el bï¿½fer de entrada de cualquier carï¿½cter pendiente, incluyendo el carï¿½cter de nueva lï¿½nea
+      cout << "Mezclando mazo, presione enter para continuar....";
+      getchar(); // Espera a que se presione una tecla
+
+      //resetear mazo inicial y volver a repartir cartas
+      resetearMazo(vMazo,MAZO);
+      repartirCartas(j1, j2, vMazo);
+    }
+
+    cout << "DETERMINEMOS QUIEN COMIENZA EL JUEGO" << endl;
+    cout << "Veremos quien tiene mas A, caso de empate seguiremos comparando con los otros valores (K, Q, J, 10)" << endl;
     //ELEGIR QUIEN JUEGA PRIMERO
-    elegirOrden(j1, j2);
-        //Indico quien juega primero
-    if( elegirOrden(j1, j2)==1 )
-    {
-        cout<< "Inicia " << j1.nombre << endl;
-        //inicia= j1;
-    }
-    else
-    {
-        if( elegirOrden(j1,j2)==2)
-        {
-            cout<< "Inicia " << j2.nombre << endl;
-            //inicia=j2
-        }
-        else
-        {
-            cout<< "no Inicia NINGUNO, volvemos a barajar";
-            manejarOpcion(1, j1, j2);
-        }
+    int starter = clutchStarter(j1, j2);
+    while(starter == 0){
+      cin.ignore(); // Limpiar el bï¿½fer de entrada de cualquier carï¿½cter pendiente, incluyendo el carï¿½cter de nueva lï¿½nea
+      cout << "*****OPS SALIO EMPATE...*****" << endl;
+      cout << "Debemos volver a repartir el mazo. Presione enter para continuar....";
+      getchar(); // Espera a que se presione una tecla
+    //resetear mazo inicial y volver a repartir cartas
+      resetearMazo(vMazo,MAZO);
+      repartirCartas(j1, j2, vMazo);
+      starter = clutchStarter(j1, j2);
     }
 
-
+    cout << endl << "-> El jugador que inicia es: " << ((starter == 1) ? j1.nombre : j2.nombre) << " <-" << endl << endl;
+    juegoInsitu(j1, j2, starter, vMazo);
     //    ->10-J-Q-K-A de manera ordenada, se mezcla y reparte nuevamente.
-    //    ->OPCIÓN NIVEL  DIOS: EMPATE EN TODO! POR EJ 2 ASES + 2 Ks + Js
+    //    ->OPCIÃ“N NIVEL  DIOS: EMPATE EN TODO! POR EJ 2 ASES + 2 Ks + Js
     //    ->QUIEN COMIENZA? MAS ASES - MAS Ks - MAS Qs - MAS Js - MAS 10s
     //  B - INFORMACION de RONDA - JUGADORES - EL TURNO DEL JUGADOR - CARTAS QUE LE CORRESPONDE
     //  C- ACCION: LANZAMIENTO DADO
