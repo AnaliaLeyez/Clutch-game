@@ -220,8 +220,6 @@ void juegoInsitu(Jugador &j1, Jugador &j2, int returne, Carta vMazo[])
     bool juegoTerminado = false;
     while(!juegoTerminado)
     {
-        //cin.ignore(); // Limpiar el buffer de entrada de cualquier caracter pendiente, incluyendo el caracter de nueva linea
-        mezclarMazo(vMazo, MAZO);
         mostrarRonda(jugadorA, jugadorB, contRonda);
         if(turno%2!=0)
         {
@@ -258,10 +256,11 @@ void juegoInsitu(Jugador &j1, Jugador &j2, int returne, Carta vMazo[])
             break;
         }
 
-        cout << endl << "Cartas Actuales" << endl;
+        cout << endl << "Cartas Actuales:" << endl;
         mostrarCartasDeJugadores(jugadorA, jugadorB);
         juegoTerminado = juegoFinalizado(jugadorA) || juegoFinalizado(jugadorB);
         turno++;
+        mezclarMazo(vMazo, MAZO);
     }
 
     cout << "PARAPAPA PA PA PAPA! HAY UN GANADORRR, ESTE ES: " ;
@@ -275,26 +274,10 @@ void juegoInsitu(Jugador &j1, Jugador &j2, int returne, Carta vMazo[])
 
 
 void resetearMazo(Carta vMazo[],int MAZO){
-    vMazo[0] = {"Diamante", "10", true, false};
-    vMazo[1] = {"Diamante", "J", true, false};
-    vMazo[2] = {"Diamante", "Q", true, false};
-    vMazo[3] = {"Diamante", "K", true, false};
-    vMazo[4] = {"Diamante", "A", true, false};
-    vMazo[5] = {"Corazon", "10", true, false};
-    vMazo[6] = {"Corazon", "J", true, false};
-    vMazo[7] = {"Corazon", "Q", true, false};
-    vMazo[8] = {"Corazon", "K", true, false};
-    vMazo[9] = {"Corazon", "A", true, false};
-    vMazo[10] = {"Pica", "10", true, false};
-    vMazo[11] = {"Pica", "J", true, false};
-    vMazo[12] = {"Pica", "Q", true, false};
-    vMazo[13] = {"Pica", "K", true, false};
-    vMazo[14] = {"Pica", "A", true, false};
-    vMazo[15] = {"Trebol", "10", true, false};
-    vMazo[16] = {"Trebol", "J", true, false};
-    vMazo[17] = {"Trebol", "Q", true, false};
-    vMazo[18] = {"Trebol", "K", true, false};
-    vMazo[19] = {"Trebol", "A", true, false};
+    for (int i = 0; i < MAZO; i++)
+    {
+        vMazo[i] = {palos[i / MAZO_VALOR], valores[i % MAZO_VALOR], true, false};
+    }
 }
 
 

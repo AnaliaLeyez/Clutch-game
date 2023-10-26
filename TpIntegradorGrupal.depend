@@ -1,22 +1,22 @@
 # depslib dependency file v1.0
-1698187763 source:c:\users\anali\documents\analía\tecnicatura univ programacion utn\materias 1º cuatri\laboratorio de computaciÓn i\tpintegradorgrupal\funcionesmenu.cpp
+1698258114 source:c:\users\anali\documents\analía\tecnicatura univ programacion utn\materias 1º cuatri\laboratorio de computaciÓn i\tpintegradorgrupal\funcionesmenu.cpp
 	<iostream>
 	<locale>
 	<stdio.h>
 	"funciones.h"
 	"estructuras.h"
 
-1698185454 c:\users\anali\documents\analía\tecnicatura univ programacion utn\materias 1º cuatri\laboratorio de computaciÓn i\tpintegradorgrupal\funciones.h
+1698258114 c:\users\anali\documents\analía\tecnicatura univ programacion utn\materias 1º cuatri\laboratorio de computaciÓn i\tpintegradorgrupal\funciones.h
 	<iostream>
 	"estructuras.h"
 
-1698182162 c:\users\anali\documents\analía\tecnicatura univ programacion utn\materias 1º cuatri\laboratorio de computaciÓn i\tpintegradorgrupal\estructuras.h
+1698342370 c:\users\anali\documents\analía\tecnicatura univ programacion utn\materias 1º cuatri\laboratorio de computaciÓn i\tpintegradorgrupal\estructuras.h
 
-1698179656 source:c:\users\anali\documents\analía\tecnicatura univ programacion utn\materias 1º cuatri\laboratorio de computaciÓn i\tpintegradorgrupal\funcionesrandom.cpp
+1698258114 source:c:\users\anali\documents\analía\tecnicatura univ programacion utn\materias 1º cuatri\laboratorio de computaciÓn i\tpintegradorgrupal\funcionesrandom.cpp
 	"funciones.h"
 	"estructuras.h"
 
-1698182518 source:c:\users\anali\documents\analía\tecnicatura univ programacion utn\materias 1º cuatri\laboratorio de computaciÓn i\tpintegradorgrupal\main.cpp
+1698258114 source:c:\users\anali\documents\analía\tecnicatura univ programacion utn\materias 1º cuatri\laboratorio de computaciÓn i\tpintegradorgrupal\main.cpp
 	<iostream>
 	<locale>
 	<cstdlib>
@@ -32,12 +32,12 @@
 	"funciones.h"
 	"estructuras.h"
 
-1698182559 source:c:\users\anali\documents\analía\tecnicatura univ programacion utn\materias 1º cuatri\laboratorio de computaciÓn i\tpintegradorgrupal\funcionesdado.cpp
+1698258114 source:c:\users\anali\documents\analía\tecnicatura univ programacion utn\materias 1º cuatri\laboratorio de computaciÓn i\tpintegradorgrupal\funcionesdado.cpp
 	<iostream>
 	"funciones.h"
 	"estructuras.h"
 
-1698182563 source:c:\users\anali\documents\analía\tecnicatura univ programacion utn\materias 1º cuatri\laboratorio de computaciÓn i\tpintegradorgrupal\funcionesunderthegun.cpp
+1698258114 source:c:\users\anali\documents\analía\tecnicatura univ programacion utn\materias 1º cuatri\laboratorio de computaciÓn i\tpintegradorgrupal\funcionesunderthegun.cpp
 	<iostream>
 	"funciones.h"
 	"estructuras.h"

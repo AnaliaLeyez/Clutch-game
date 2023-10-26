@@ -29,22 +29,16 @@ void manejarOpcion(int opcion, Jugador &j1, Jugador &j2)
   {
     case 1: //Jugar
     {
-        //Inicio con el mazo ordenado
-        Carta vMazo[MAZO] =
-    {
-        {"Diamante", "10", true}, {"Diamante", "J", true}, {"Diamante", "Q", true}, {"Diamante", "K", true}, {"Diamante", "A", true},
-        {"Corazon", "10", true}, {"Corazon", "J", true}, {"Corazon", "Q", true}, {"Corazon", "K", true}, {"Corazon", "A", true},
-        {"Pica", "10", true}, {"Pica", "J", true}, {"Pica", "Q", true}, {"Pica", "K", true}, {"Pica", "A", true},
-        {"Trebol", "10", true}, {"Trebol", "J", true}, {"Trebol", "Q", true}, {"Trebol", "K", true}, {"Trebol", "A", true}
-    };
     // INGRESO NOMBRES
     nombresJugadores(j1, j2);
 
     //NUEVO, ANA
     cout <<"ENHORABUENA COMENZAMOS EL JUEGO!!!" << endl;
     cout << "ESTAS SON LAS CARTAS INICIALES" << endl;
-
-     mostrarMazoEnMesa(vMazo);
+    //Inicio con el mazo ordenado
+    Carta vMazo[MAZO];
+    resetearMazo(vMazo, MAZO);
+    mostrarMazoEnMesa(vMazo);
     //NUEVO, ANA
 
     // MEZCLAR EL MAZO
@@ -68,7 +62,7 @@ void manejarOpcion(int opcion, Jugador &j1, Jugador &j2)
     }
 
     cout << "DETERMINEMOS QUIEN COMIENZA EL JUEGO" << endl;
-    cout << "Veremos quien tiene mas A, caso de empate seguiremos comparando con los otros valores (K, Q, J, 10)" << endl;
+    cout << "Veremos quien tiene mas A, caso de empate seguiremos comparando con los siguientes valores (K, Q, J, 10)" << endl;
     //ELEGIR QUIEN JUEGA PRIMERO
     int starter = clutchStarter(j1, j2);
     while(starter == 0){
@@ -81,18 +75,8 @@ void manejarOpcion(int opcion, Jugador &j1, Jugador &j2)
       repartirCartas(j1, j2, vMazo);
       starter = clutchStarter(j1, j2);
     }
-
     cout << endl << "-> El jugador que inicia es: " << ((starter == 1) ? j1.nombre : j2.nombre) << " <-" << endl << endl;
     juegoInsitu(j1, j2, starter, vMazo);
-    //    ->10-J-Q-K-A de manera ordenada, se mezcla y reparte nuevamente.
-    //    ->OPCIÓN NIVEL  DIOS: EMPATE EN TODO! POR EJ 2 ASES + 2 Ks + Js
-    //    ->QUIEN COMIENZA? MAS ASES - MAS Ks - MAS Qs - MAS Js - MAS 10s
-    //  B - INFORMACION de RONDA - JUGADORES - EL TURNO DEL JUGADOR - CARTAS QUE LE CORRESPONDE
-    //  C- ACCION: LANZAMIENTO DADO
-
-
-     // mezclarDado(dado);
-    //cout << "El dado ahora es: " << dado;
       break;
     }
     case 2:
