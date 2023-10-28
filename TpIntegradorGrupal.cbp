@@ -37,9 +37,11 @@
 		<Unit filename="funcionesDado.cpp" />
 		<Unit filename="funcionesJugar.cpp" />
 		<Unit filename="funcionesMenu.cpp" />
+		<Unit filename="funcionesPuntaje.cpp" />
 		<Unit filename="funcionesRandom.cpp" />
 		<Unit filename="funcionesUnderTheGun.cpp" />
 		<Unit filename="main.cpp" />
+		<Unit filename="rlutil.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

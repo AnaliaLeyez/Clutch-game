@@ -13,6 +13,5 @@ int generarNumero(int tamanio)
 
 int lanzarDado(){
  int dado = generarNumero(6) + 1;
-
   return dado;
 }
