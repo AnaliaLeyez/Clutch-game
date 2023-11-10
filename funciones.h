@@ -9,8 +9,8 @@
 //ACA VAN LAS DECLARACIONES
 
 //FUNCIONES DEL MENU
-void mostrarMenu(int &opcion, Jugador &j1, Jugador &j2, Jugador vEstadisticas[]);
-void manejarOpcion(int opcion, Jugador &j1, Jugador &j2, Jugador vEstadisticas[]);
+void mostrarMenu(Jugador &j1, Jugador &j2, bool &banderaUltimoGanador);
+void manejarOpcion(int opcion, Jugador &j1, Jugador &j2, Jugador &ganadorMaximo, bool &banderaUltimoGanador);
 
 //FUNCIONES DE INGRESO DE DATOS PRIMARIOS
 void nombresJugadores(Jugador &j1, Jugador &j2);
@@ -22,9 +22,10 @@ int generarNumero(int tamanio);
 void resetearMazo(Carta vMazo[]);
 void repartirCartas(Jugador &j1, Jugador &j2, Carta arr[]);
 void mezclarMazo(Carta vArr[]);
-void mostrarRonda(Jugador jA, Jugador jB, int &contRonda);
+void mostrarRonda(Jugador jA, Jugador jB, int &contRonda, int &turno);
 void mostrarMazoEnMesa(Carta vMazo[]);
 void mostrarCartasDeJugadores(Jugador &j1, Jugador &j2);
+void validarIngreso(int &posicionCorral);
 
 //FUNCIONES UNDER THE GUN
 int clutchStarter(Jugador j1, Jugador j2);
@@ -37,15 +38,23 @@ void dadoCaraDos(Jugador &j, Carta mazo[]);
 void dadoCaraTres(Jugador &j1, Jugador &j2);
 void dadoCaraCuatro(Jugador &j);
 void dadoCaraCinco(Jugador &j);
-void dadoCaraSeis(Jugador &j1, Jugador &j2, Carta vMazo[]);
+void dadoCaraSeis(Jugador &j1, Jugador &j2, Carta vMazo[], int &ultimaJugada);
 
 //JUEGO IN SITU
-void juegoInsitu(Jugador &j1, Jugador &j2, int returne, Carta vMazo[], Jugador vEstadisticas[]);
+Jugador juegoInsitu(Jugador &j1, Jugador &j2, int returne, Carta vMazo[]);
 
 //FIN DE JUEGO
 bool juegoFinalizado(Jugador &jugador);
 
 //PUNTAJES
-void mostrarPuntajes(Jugador &ganador, Jugador &perdedor);
-void cargarEstadisticas(Jugador vJugador[], Jugador &ganador);
-void mostrarEstadisticas(Jugador vJugador[]);
+void mostrarPuntajes(Jugador &ganador, Jugador &perdedor, int ultimaJugada);
+
+//ESTADISTICA
+void mostrarHito(Jugador &ganadorMaximo);
+void reproducirSonidoEstd();
+
+
+//CREDITOS
+void mostrarCreditos(int &opcion, Jugador &j1, Jugador &j2);
+void reproducirSonidoCred();
+

@@ -21,11 +21,25 @@ void nombresJugadores(Jugador &j1, Jugador &j2)
         cout << "Participante 1: ";
         cin.ignore(); // Limpiar el buffer del teclado antes de leer la cadena
         getline(cin, j1.nombre); //es para poner espacios entre nombres
+        while(j1.nombre.length() > 15)
+        {
+            cout << "Por favor ingrese un nombre mas corto (HASTA 15 LETRAS)." << endl;
+            cout << "Participante 1: ";
+            getline(cin, j1.nombre); //es para poner espacios entre nombres
+        }
+
         cout << "Participante 2: ";
         getline(cin, j2.nombre);
+        while(j1.nombre.length() > 15)
+        {
+            cout << "Por favor ingrese un nombre mas corto (HASTA 15 LETRAS)." << endl;
+            cout << "Participante 1: ";
+            getline(cin, j1.nombre); //es para poner espacios entre nombres
+        }
 
         cout << ("Confirmar nombres (S/N): ");
         cin >> confirmacion;
+        cout << "---------------------------------------------------------" << endl;
         while (!(confirmacion == 'S' || confirmacion == 's' || confirmacion == 'N' || confirmacion == 'n'))
         {
             cout << "Por favor ingrese solo 'S' o 'N'." << endl;
@@ -42,7 +56,8 @@ void nombresJugadores(Jugador &j1, Jugador &j2)
     cout << "Nombres confirmados: " << j1.nombre << " VS " << j2.nombre << endl;
 }
 
-void resetearMazo(Carta vMazo[]){
+void resetearMazo(Carta vMazo[])
+{
     for (int i = 0; i < MAZO; i++)
     {
         vMazo[i] = {PALOS[i / MAZO_VALOR], VALORES[i % MAZO_VALOR], true, false};
@@ -53,9 +68,7 @@ void mezclarMazo(Carta vArr[])
 {
     setlocale(LC_ALL, "Spanish");
 
-    //cin.ignore(); // Limpiar el buffer de entrada de cualquier caracter pendiente, incluyendo el caracter de nueva linea
     cout << "Mezclando mazo, presione una tecla para continuar...." << endl;
-    //getchar(); // Espera a que se presione una tecla
     rlutil::anykey();
     int aleatorio1, aleatorio2;
     Carta aux;
@@ -132,18 +145,48 @@ void mostrarCartasDeJugadores(Jugador &j1, Jugador &j2)
     cout << "+--------------------+" << endl;
     cout << "|                    |" << endl;
 
-    cout << "| " << j1.nombre << setw(20 - j1.nombre.length()) << "|" << endl;
+    // JUGADOR 1
+    cout << "| ";
+    rlutil::setColor(rlutil::RED);
+    cout << j1.nombre << setw(20 - j1.nombre.length()) ;
+    rlutil::setColor(rlutil::BLACK);
+    cout<< "|" << endl;
+
     for(int x=0; x<CARTAS_CORRAL; x++)
     {
         cout << "|     ";
         if (j1.corral[x].bloqueada)
         {
-            cout << "* ";
-            cout << j1.corral[x].palo << " " << j1.corral[x].valor << setw(13 - j1.corral[x].valor.length() - j1.corral[x].palo.length()) << "|";
+            if(j1.corral[x].palo == "Diamante" || j1.corral[x].palo == "Corazon")
+            {
+                rlutil::setColor(rlutil::LIGHTRED);
+                cout << "* ";
+                cout << j1.corral[x].palo << " " << j1.corral[x].valor << setw(13 - j1.corral[x].valor.length() - j1.corral[x].palo.length());
+                rlutil::setColor(rlutil::BLACK);
+                cout << "|";
+            }
+            else
+            {
+                cout << "* ";
+                cout << j1.corral[x].palo << " " << j1.corral[x].valor << setw(13 - j1.corral[x].valor.length() - j1.corral[x].palo.length());
+                cout << "|";
+            }
+
         }
         else
         {
-            cout << j1.corral[x].palo << " " << j1.corral[x].valor << setw(15 - j1.corral[x].valor.length() - j1.corral[x].palo.length()) << "|";
+            if(j1.corral[x].palo == "Diamante" || j1.corral[x].palo == "Corazon")
+            {
+                rlutil::setColor(rlutil::LIGHTRED);
+                cout << j1.corral[x].palo << " " << j1.corral[x].valor << setw(15 - j1.corral[x].valor.length() - j1.corral[x].palo.length());
+                rlutil::setColor(rlutil::BLACK);
+                cout << "|";
+            }
+            else
+            {
+                cout << j1.corral[x].palo << " " << j1.corral[x].valor << setw(15 - j1.corral[x].valor.length() - j1.corral[x].palo.length()) << "|";
+
+            }
         }
         cout << endl;
     }
@@ -152,27 +195,54 @@ void mostrarCartasDeJugadores(Jugador &j1, Jugador &j2)
     cout << "|                    |" << endl;
     cout << "|                    |" << endl;
 
-    cout  << "| "<< j2.nombre << setw(20 - j2.nombre.length()) << "|" << endl;
+    // JUGADOR 2
+    cout << "| ";
+    rlutil::setColor(rlutil::BLUE);
+    cout << j2.nombre << setw(20 - j2.nombre.length()) ;
+    rlutil::setColor(rlutil::BLACK);
+    cout<< "|" << endl;
 
     for(int x=0; x<CARTAS_CORRAL; x++)
     {
         cout << "|     ";
         if (j2.corral[x].bloqueada)
-        {
-            cout << "* ";
-            cout << j2.corral[x].palo << " " << j2.corral[x].valor << setw(13 - j2.corral[x].valor.length() - j2.corral[x].palo.length()) << "|";
-        }
-        else
-        {
-            cout << j2.corral[x].palo << " " << j2.corral[x].valor << setw(15 - j2.corral[x].valor.length() - j2.corral[x].palo.length()) << "|";
-        }
+    {
+      if (j2.corral[x].palo == "Diamante" || j2.corral[x].palo == "Corazon")
+      {
+        rlutil::setColor(rlutil::LIGHTRED);
+        cout << "* ";
+        cout << j2.corral[x].palo << " " << j2.corral[x].valor << setw(13 - j2.corral[x].valor.length() - j2.corral[x].palo.length());
+        rlutil::setColor(rlutil::BLACK);
+        cout << "|";
+      }
+      else
+      {
+        cout << "* ";
+        cout << j2.corral[x].palo << " " << j2.corral[x].valor << setw(13 - j2.corral[x].valor.length() - j2.corral[x].palo.length());
+        cout << "|";
+      }
+    }
+    else
+    {
+      if (j2.corral[x].palo == "Diamante" || j2.corral[x].palo == "Corazon")
+      {
+        rlutil::setColor(rlutil::LIGHTRED);
+        cout << j2.corral[x].palo << " " << j2.corral[x].valor << setw(15 - j2.corral[x].valor.length() - j2.corral[x].palo.length());
+        rlutil::setColor(rlutil::BLACK);
+        cout << "|";
+      }
+      else
+      {
+        cout << j2.corral[x].palo << " " << j2.corral[x].valor << setw(15 - j2.corral[x].valor.length() - j2.corral[x].palo.length()) << "|";
+      }
+    }
         cout << endl;
     }
     cout << "|                    |" << endl;
     cout << "+--------------------+" << endl;
 }
 
-void mostrarRonda(Jugador jA, Jugador jB, int &contRonda)
+void mostrarRonda(Jugador jA, Jugador jB, int &contRonda, int &turno)
 {
     cout << "CLUTCH" << endl;
     cout << "---------------------------------------------------------" << endl;
@@ -186,6 +256,12 @@ void mostrarRonda(Jugador jA, Jugador jB, int &contRonda)
     rlutil::setColor(rlutil::BLACK);
 }
 
+void validarIngreso(int &posicionCorral){
+  while (posicionCorral < 1 || posicionCorral > 5){
+    cout << "Ingrese un valor valido ENTRE 1 y 5: ";
+    cin >> posicionCorral;
+  }
+}
 
 bool juegoFinalizado(Jugador &jugador)
 {
@@ -200,14 +276,17 @@ bool juegoFinalizado(Jugador &jugador)
 }
 
 
-void juegoInsitu(Jugador &j1, Jugador &j2, int returne, Carta vMazo[], Jugador vEstadisticas[])
+Jugador juegoInsitu(Jugador &j1, Jugador &j2, int returne, Carta vMazo[]) // el returne viene de clutchStarter
 {
     setlocale(LC_ALL, "Spanish");
     Jugador jugadorA;
     Jugador jugadorB;
+    Jugador ganador;
+
     int dado;
     int contRonda=1;
     int turno=1;
+    int ultimaJugada = -1;
 
     if(returne == 1)
     {
@@ -224,20 +303,21 @@ void juegoInsitu(Jugador &j1, Jugador &j2, int returne, Carta vMazo[], Jugador v
     bool juegoTerminado = false;
     while(!juegoTerminado)
     {
-        mostrarRonda(jugadorA, jugadorB, contRonda);
-        if(turno%2!=0)
-        {
-            rlutil::setColor(rlutil::RED);
-            cout << "TURNO DE " << jugadorA.nombre << endl;
-            rlutil::setColor(rlutil::BLACK);
-        }
-        else
-        {
-            rlutil::setColor(rlutil::BLUE);
-            cout << "TURNO DE " << jugadorB.nombre << endl;
-            rlutil::setColor(rlutil::BLACK);
-            contRonda ++;
-        }
+        mostrarRonda(jugadorA, jugadorB, contRonda, turno);
+        if(turno %2 != 0)
+      {
+        rlutil::setColor(rlutil::RED);
+        cout << "TURNO DE " << jugadorA.nombre << endl;
+        rlutil::setColor(rlutil::BLACK);
+      }
+      else
+      {
+        rlutil::setColor(rlutil::BLUE);
+        cout << "TURNO DE " << jugadorB.nombre << endl;
+        rlutil::setColor(rlutil::BLACK);
+        contRonda ++;
+      }
+
         cout << "Pulse Enter cuando este listo para lanzar el dado." << endl;
         dado = lanzarDado();
         getchar();
@@ -250,27 +330,35 @@ void juegoInsitu(Jugador &j1, Jugador &j2, int returne, Carta vMazo[], Jugador v
         {
         case 1:
             turno%2!=0 ? dadoCaraUno(jugadorA, vMazo) : dadoCaraUno(jugadorB, vMazo);
+            ultimaJugada = 1;
             break;
         case 2:
             turno%2!=0 ? dadoCaraDos(jugadorB, vMazo) : dadoCaraDos(jugadorA, vMazo);
+            ultimaJugada = 2;
             break;
         case 3:
             turno%2!=0 ? dadoCaraTres(jugadorA, jugadorB) : dadoCaraTres(jugadorB, jugadorA);
+            ultimaJugada = 3;
             break;
         case 4:
             turno%2!=0 ? dadoCaraCuatro(jugadorA) : dadoCaraCuatro(jugadorB);
+            ultimaJugada = 4;
             break;
         case 5:
-            turno%2!=0 ? dadoCaraCinco(jugadorB) : dadoCaraCinco(jugadorA);
+            turno%2!=0 ? dadoCaraCinco(jugadorA) : dadoCaraCinco(jugadorB);
+            ultimaJugada = 5;
             break;
         case 6:
-            turno%2!=0 ? dadoCaraSeis(jugadorA, jugadorB, vMazo) : dadoCaraSeis(jugadorB, jugadorA, vMazo);
+            turno%2!=0
+            ? dadoCaraSeis(jugadorA, jugadorB, vMazo, ultimaJugada)
+            : dadoCaraSeis(jugadorB, jugadorA, vMazo, ultimaJugada);
             break;
         }
 
         turno++;
         juegoTerminado = juegoFinalizado(jugadorA) || juegoFinalizado(jugadorB);
-        if(!juegoTerminado){
+        if(!juegoTerminado)
+        {
             mezclarMazo(vMazo);
         }
     }
@@ -281,20 +369,22 @@ void juegoInsitu(Jugador &j1, Jugador &j2, int returne, Carta vMazo[], Jugador v
     mostrarCartasDeJugadores(jugadorA, jugadorB);
 
     cout << "PARAPAPA PA PA PAPA! HAY UN GANADORRR, ESTE ES: " ; // Esto tambien podriamos colorearlo.
-        if(juegoFinalizado(jugadorA))
-        {
-            //rlutil::setBackgroundColor(rlutil::GREEN);
-            cout << jugadorA.nombre << endl;
-            //rlutil::setBackgroundColor(rlutil::WHITE);
-            mostrarPuntajes(jugadorA, jugadorB);
-            cargarEstadisticas(vEstadisticas, jugadorA);
-        }
-        else{
-            //rlutil::setBackgroundColor(rlutil::GREEN);
-            cout<< jugadorB.nombre << endl;
-            //rlutil::setBackgroundColor(rlutil::WHITE);
-            mostrarPuntajes(jugadorB, jugadorA);
-            cargarEstadisticas(vEstadisticas, jugadorB);
-        }
+    if(juegoFinalizado(jugadorA))
+    {
+        //rlutil::setBackgroundColor(rlutil::GREEN);
+        cout << jugadorA.nombre << endl;
+        //rlutil::setBackgroundColor(rlutil::WHITE);
+        mostrarPuntajes(jugadorA, jugadorB, ultimaJugada);
+        ganador = jugadorA;
+    }
+    else
+    {
+        //rlutil::setBackgroundColor(rlutil::GREEN);
+        cout<< jugadorB.nombre << endl;
+        //rlutil::setBackgroundColor(rlutil::WHITE);
+        mostrarPuntajes(jugadorB, jugadorA, ultimaJugada);
+        ganador = jugadorB;
+    }
+    return ganador;
 }
 

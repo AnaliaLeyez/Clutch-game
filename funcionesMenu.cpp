@@ -7,24 +7,44 @@
 
 using namespace std;
 
-void mostrarMenu(int &opcion, Jugador &j1, Jugador &j2, Jugador vEstadisticas[])
+void mostrarMenu(Jugador &j1, Jugador &j2, bool &banderaUltimoGanador)
 {
     setlocale(LC_ALL, "Spanish");
-    cout << endl << "CLUTCH " << endl;
-    cout << "--------------------" << endl;
-    cout << "1 - JUGAR" << endl;
-    cout << "2 - ESTADÍSTICAS" << endl;
-    cout << "3 - CRÉDITOS" << endl;
-    cout << "---------------------" << endl;
-    cout << "0 - SALIR" << endl;
-    cout << "Ingrese su opción: ";
-    cin >> opcion;
-    manejarOpcion(opcion, j1, j2, vEstadisticas);
+    int opcion;
+    Jugador ganadorMaximo; //si esto lo declaro en manejarOpcion no funciona
+
+    do
+    {
+        cout << endl << "CLUTCH " << endl;
+        cout << "--------------------" << endl;
+        cout << "1 - JUGAR" << endl;
+        cout << "2 - ESTADÍSTICAS" << endl;
+        cout << "3 - CRÉDITOS" << endl;
+        cout << "---------------------" << endl;
+        cout << "0 - SALIR" << endl;
+        cout << "Ingrese su opción: ";
+        cin >> opcion;
+
+        if(opcion < 0 || opcion > 3)
+        {
+            cout << "ERROR: " << opcion << " no es un numero valido. Presione una tecla para continuar...." << endl;
+            rlutil::anykey();
+            rlutil::cls();//Borra pantalla para ver el fondo verde
+        }
+        else
+        {
+            manejarOpcion(opcion, j1, j2, ganadorMaximo, banderaUltimoGanador);
+        }
+
+    }
+    while(opcion!=0);
 }
 
-void manejarOpcion(int opcion, Jugador &j1, Jugador &j2,Jugador vEstadisticas[])
+void manejarOpcion(int opcion, Jugador &j1, Jugador &j2, Jugador &ganadorMaximo, bool &banderaUltimoGanador)
 {
     setlocale(LC_ALL, "Spanish");
+    Jugador ganador;
+
     switch (opcion)
     {
     case 1: //Jugar
@@ -33,6 +53,7 @@ void manejarOpcion(int opcion, Jugador &j1, Jugador &j2,Jugador vEstadisticas[])
 
         // INGRESO NOMBRES
         nombresJugadores(j1, j2);
+        rlutil::cls(); //Borra lo que estaba antes al elegir una opcion
 
         cout << "ENHORABUENA COMENZAMOS EL JUEGO!!!" << endl;
         cout << "ESTAS SON LAS CARTAS INICIALES" << endl;
@@ -60,7 +81,7 @@ void manejarOpcion(int opcion, Jugador &j1, Jugador &j2,Jugador vEstadisticas[])
             getchar(); // Espera a que se presione una tecla
             resetearMazo(vMazo); //resetear mazo inicial y volver a repartir cartas
             repartirCartas(j1, j2, vMazo);
-
+            mostrarCartasDeJugadores(j1,j2);
         }
 
         rlutil::setColor(rlutil::RED);
@@ -78,26 +99,35 @@ void manejarOpcion(int opcion, Jugador &j1, Jugador &j2,Jugador vEstadisticas[])
             resetearMazo(vMazo); //resetear mazo inicial y volver a repartir cartas
             mezclarMazo(vMazo);
             repartirCartas(j1, j2, vMazo);
+            mostrarCartasDeJugadores(j1,j2);
             starter = clutchStarter(j1, j2);
         }
         cout << endl << "-> El jugador que inicia es: " << ((starter == 1) ? j1.nombre : j2.nombre) << " <-" << endl << endl;
         cout << "Presione una tecla cualquiera cuando esté listo para iniciar el juego." << endl << endl;
         rlutil::anykey();
-        juegoInsitu(j1, j2, starter, vMazo, vEstadisticas);
+        rlutil::cls();//Borra pantalla para ver el fondo verde
+
+        ganador = juegoInsitu(j1, j2, starter, vMazo);
+        if(!banderaUltimoGanador)
+        {
+            ganadorMaximo = ganador;
+            banderaUltimoGanador  = true;
+        }
+        else if(ganador.puntajeHistorico > ganadorMaximo.puntajeHistorico || ganador.puntajeHistorico == ganadorMaximo.puntajeHistorico )
+        {
+            ganadorMaximo = ganador;
+        }
+
         break;
     }
     case 2:
-        //estadisticas();
+        mostrarHito(ganadorMaximo);
         break;
     case 3:
-        //creditos();
+        mostrarCreditos(opcion,j1,j2);
         break;
     case 0:
-        cout << "Gracias por jugar CLUTCH" << endl;
-        break;
-    default:
-        cout << "El numero ingresado no es valido. Por favor ingrese una opcion valida." << endl;
-        mostrarMenu(opcion, j1, j2, vEstadisticas);
+        cout << "SALIENDO DEL JUEGO. Gracias por jugar CLUTCH" << endl;
         break;
     }
 }

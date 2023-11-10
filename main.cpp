@@ -16,18 +16,13 @@ int main()
     setlocale(LC_ALL, "Spanish");
     srand(time(0));
 
-    // INGRESO AL SWITCH DE OPCIONES
-    int opcion;
     Jugador jugador1;
     Jugador jugador2;
 
-    //Array para las estadisticas
-    Jugador estadisticas[CARTAS_CORRAL]={};
+    bool banderaUltimoGanador = false;
 
     //FUNCION MENU()
-    mostrarMenu(opcion, jugador1, jugador2, estadisticas); //MUESTRA el menu y maneja la opcion elegida
-
-    //MENU con 3 funciones => 1 - JUGAR(), 2 - ESTADISTICAS(), 3 - CREDITOS;
+    mostrarMenu(jugador1, jugador2, banderaUltimoGanador); //MUESTRA el menu y maneja la opcion elegida
 
     return 0;
 }
